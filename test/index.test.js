@@ -1,4 +1,6 @@
 const { NUtils } = require("../dist");
+const fs = require("fs");
+const path = require("path");
 
 test("Get Random Number", () => {
     console.log(NUtils.getRandom(1, 1000));
@@ -27,4 +29,15 @@ test("Check If 2 Objects are Equal", () => {
 test("Sleep for a Given Time", async () => {
     await NUtils.sleep(1000);
     console.log("I have slept for 1 second!");
+});
+
+test("Run a Function in WASM", async () => {
+    var wasmData = fs.readFileSync(path.join(__dirname, "./add.wasm"));
+
+    var wasm = await new NUtils.WASM(wasmData).getWASMInstance();
+
+    expect(wasm._Z3addii(1, 2)).toBe(3);
+    expect(wasm._Z3addii(2, 3)).toBe(5);
+    expect(wasm._Z3addii(2, 4)).toBe(6);
+    expect(wasm._Z3addii(5, 2)).toBe(7);
 });

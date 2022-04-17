@@ -1,3 +1,5 @@
+import _WASM from "./classes/wasm";
+
 export namespace NUtils {
     export function getRandom(min: number, max: number): number {
         return Math.floor(Math.random() * (max - min + 1) + min);
@@ -35,4 +37,6 @@ export namespace NUtils {
     export function sleep(time: number): Promise<{}> {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
+
+    export class WASM extends _WASM {}
 }
