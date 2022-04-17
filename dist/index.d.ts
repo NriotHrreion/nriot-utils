@@ -5,4 +5,3 @@ export declare namespace NUtils {
     function isObjectEqual(obj1: object, obj2: object): boolean;
     function sleep(time: number): Promise<{}>;
 }
-//# sourceMappingURL=index.d.ts.map

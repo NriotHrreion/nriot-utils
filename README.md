@@ -21,7 +21,7 @@ const { NUtils } = require("nriot-utils");
 ### 浏览器
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/nriot-utils"></script>
+<script src="https://cdn.jsdelivr.net/npm/nriot-utils@latest"></script>
 ```
 
 调用

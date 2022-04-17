@@ -1,3 +1,6 @@
+const webpack = require("webpack");
+const TerserPlugin = require("terser-webpack-plugin");
+
 const path = require("path");
 
 module.exports = {
@@ -24,5 +27,19 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new webpack.BannerPlugin({
+            banner: `nriot-utils | Copyright (c) NriotHrreion ${new Date().getFullYear()} | https://github.com/NriotHrreion/nriot-utils`,
+        })
+    ],
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                extractComments: false // Don't generate xxx.LICENSE.txt
+            })
+        ]
+    },
     mode: "production",
+    devtool: "source-map",
 };
